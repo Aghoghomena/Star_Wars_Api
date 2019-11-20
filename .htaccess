@@ -1,0 +1,18 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite for index.php
+#RewriteRule ^([0-9]+)/([0-9a-zA-Z_-]+)$ register.php
+#register url
+#RewriteRule ^register$ register.php
+#RewriteRule ./register.php [L]
+#dashboard page
+#RewriteRule ^pages/dashboard$ pages/dashboard.php
+# Rewrite for balance userscript.php?u=xxxxx
+
+#RewriteRule ^api/movie/ $ api/movie/
+#RewriteRule ^pages/([0-9a-zA-Z_-]+)$ pages/$1.php [NC,L]
+#RewriteRule ^scripts/([0-9a-zA-Z_-]+)$ scripts/$1.php [NC,L]
+#RewriteRule ^pages/([0-9a-zA-Z_-]+)/([0-9]+)/?$ pages/$1.php?id=$1 [NC,L]
