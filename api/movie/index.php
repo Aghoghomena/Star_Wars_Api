@@ -14,8 +14,8 @@ else{
     $url = $base_url . 'films/?format=json';
     $get_data = get_from_api($url);
     if ($get_data['status_code'] == 1001) {
-        $result = $get_data;
-
+        $formatted_data = format_movie_list($get_data['data']['results']);
+        print_r($formatted_data);
     } else {
         $result = $get_data;
     }
