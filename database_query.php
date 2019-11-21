@@ -9,21 +9,50 @@
 include_once 'database_class.php';
 include_once 'constant.php';
 
+class Query extends Database{
 
-//insert new movie
-function insert_movie($movie_id, $movie_name){
+    public $movie_table = 'movies';
+    public $comments_table = 'movie_comments';
+    //insert new movie
+    function insert_movie($movie_id, $movie_name){
 
-}
+        $column = array('episode', 'movie_name');
+        $values = array($movie_id, $movie_name);
+        $this->insert_data($this->movie_table, $column, $values);
+    }
 
 //check if movie exists
-function check_duplicate_movie($movie_id){
-    $columns = array("id");
+    function check_duplicate_movie($movie_id){
+        $columns = array("id");
 
-    $o_where['column_name'] = "movie_id";
-    $o_where['sign'] = "=";
-    $o_where['value'] = $movie_id;
-    $movie_where[] = $o_where;
+        $o_where['column_name'] = "episode_id";
+        $o_where['sign'] = "=";
+        $o_where['value'] = $movie_id;
+        $movie_where[] = $o_where;
 
-    $get_movie = $this->select_tb($this->order_table . ' rot', $columns, $order_where, "", "", "", "", "", $left_join);
+        $get_movie = $this->select_tb( $this->movie_table, $columns, $movie_where);
+        return $get_movie;
+
+    }
+
+    //get movie comments
+    function get_movie_comments($movie_id){
+        $columns = array("comment", "ip_address", "mc.date_added");
+
+        $l_join['table_name'] = $this->movie_table. ' m';
+        $l_join['first_column'] = "m.id";
+        $l_join['second_column'] = "movie_id";
+        $left_join[] = $l_join;
+
+        $o_where['column_name'] = "episode_id";
+        $o_where['sign'] = "=";
+        $o_where['value'] = $movie_id;
+        $movie_where[] = $o_where;
+
+
+        $get_comments = $this->select_tb( $this->comments_table. ' mc', $columns, $movie_where, '', '', '', '', '', $left_join);
+        return $get_comments;
+    }
 
 }
+

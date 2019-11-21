@@ -12,7 +12,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^pages/dashboard$ pages/dashboard.php
 # Rewrite for balance userscript.php?u=xxxxx
 
-#RewriteRule ^api/movie/ $ api/movie/
+RewriteRule ^api/movie$ api/movie/index.php [L]
+RewriteRule ^api/movie/([0-9]+)/?$ api/movie/?flag=single&id=$1 [NC,L]
+RewriteRule ^api/people$ api/people/?flag=all [L]
 #RewriteRule ^pages/([0-9a-zA-Z_-]+)$ pages/$1.php [NC,L]
 #RewriteRule ^scripts/([0-9a-zA-Z_-]+)$ scripts/$1.php [NC,L]
 #RewriteRule ^pages/([0-9a-zA-Z_-]+)/([0-9]+)/?$ pages/$1.php?id=$1 [NC,L]
+#RewriteRule ^shirt/summer$ results.php?item=shirt&season=summer
