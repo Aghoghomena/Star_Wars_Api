@@ -398,7 +398,6 @@ class Database
         $table = $this->escape_string($table);
         $scolumns = $this->adjust_columns($columns);
         $this->sql = "INSERT INTO " . $table . "(" . $scolumns . ")";
-//echo $this->sql;
         $svalues = $this->adjust_insert_columns($values);
         $this->sql = $this->sql . " VALUES (" . $svalues . ")";
         //echo $this->sql;

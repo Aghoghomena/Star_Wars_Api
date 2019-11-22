@@ -54,5 +54,21 @@ class Query extends Database{
         return $get_comments;
     }
 
+    //insert comments
+    public function create_comments($comments, $ip_address, $episode_id){
+        $column = array('comment', 'ip_address', 'movie_id');
+        $values = array($comments, $ip_address, $episode_id);;
+        $insert_table = $this->insert_data($this->comments_table, $column, $values);
+        return $insert_table;
+    }
+
+    //get all comments
+    function get_all_comments(){
+        $columns = array("comment", "ip_address", "date_added");
+
+        $get_comments = $this->select_tb( $this->comments_table, $columns, '', '', '', ['date_added', 'DESC'], '', '', '');
+        return $get_comments;
+    }
+
 }
 

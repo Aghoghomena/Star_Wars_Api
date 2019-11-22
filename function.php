@@ -3,6 +3,14 @@
 //verify the token
 include_once 'database_query.php';
 
+require_once 'vendor/autoload.php';
+
+use Nahid\JsonQ\Jsonq;
+
+//declare  a variable for the ratecursive functions
+$output_data =[];
+
+
 function send_to_api($data, $url, $token)
 {
     $ch = curl_init($url);
@@ -34,7 +42,7 @@ function get_from_api($url)
     if ($err) {
 
         $result = array(
-            'status_code' => 404,
+            'status_code' => 401,
             'status_message' => $err
         );
 
@@ -122,38 +130,230 @@ function date_compare($a, $b)
 }
 
 //handle pagination api
-function get_pages_api($url, $existing_data, $total)
+function get_pages_api($url, $existing_data, $total, $total_height)
 {
-
+     global $output_data;
     $data = get_from_api($url);
     if ($data['status_code'] == 1001) {
 //       check if it has a nezt;
         $url = $data['data']['next'];
-        $format_data = format_pages_data($data['data']['results'], $total, $existing_data);
+        $format_data = format_pages_data($data['data']['results'], $total, $existing_data,$total_height);
         if ($url !== null) {
-            $loop_data = get_pages_api($url,$format_data['data'], $format_data['count']);
+            $loop_data = get_pages_api($url,$format_data['data'], $format_data['count'],$format_data['height']);
+            return $loop_data;
         } else {
             $result =array(
                 'status_code' => 200,
                 'status_message'=> 'Success',
                 'total'=> $format_data['count'],
+                'total_height' =>$format_data['height'],
                 'results'=>$format_data['data']
             );
-            print_r($result);
+            return $result;
         }
     } else {
         return $data;
     }
-
 }
 
 //format people api
 
-function format_pages_data($data, $total, $existing_data){
+function format_pages_data($data, $total, $existing_data,$total_height){
     $formatted_data =$existing_data;
     foreach ($data as $datum){
+        if($datum['height'] !== 'unknown'){
+            $total_height += $datum['height'];
+        }
         array_push($formatted_data, ['name'=> $datum['name'], 'gender'=>$datum['gender'], 'height'=>$datum['height']]);
         $total ++;
     }
-    return ['data'=>$formatted_data, 'count'=>$total];
+    return ['data'=>$formatted_data, 'count'=>$total, 'height'=>$total_height];
 }
+
+//sort an array
+function sort_array($value, $order,$data){
+    $jsonq = new Jsonq();
+    $json = $jsonq->collect($data);
+    $res = $json->from('results')
+        ->sortBy($value, $order)
+        ->get();
+    return $res;
+}
+//filter through an array
+function filter_array($value,$key, $data){
+    $jsonq = new Jsonq();
+    $json = $jsonq->collect($data);
+    $res = $json->from('results')
+        ->where($key, '=', $value)
+        ->get();
+    return $res;
+}
+//format people array
+function format_people_array($data){
+    $jsonq = new Jsonq();
+    $json = $jsonq->collect($data);
+    $sum_height = $json->from('results')
+        ->sum('height');
+    $data['total'] = count($data['results']);
+    $height_in_feet = floor(($sum_height/30.48));
+    $height_in_inches =round(($sum_height/2.54),2);
+    $data['total_height'] = $sum_height .'cm makes '. $height_in_feet. 'ft'. ' and '. $height_in_inches. ' inches';
+    return $data;
+
+}
+
+//insert comments
+function insert_comment($comment, $ip_address, $episode_id){
+    $query = new Query();
+    $insert = $query->create_comments($comment, $ip_address, $episode_id);
+    //insert was successfull
+    if($insert > 0){
+        $result = array(
+            'status_code' => 200,
+            'status_message' => 'Comment Successfully Created',
+        );
+        return $result;
+    }
+    //insert failed
+    else{
+        $result = array(
+            'status_code' => 401,
+            'status_message' => 'An Error Occurred',
+        );
+        return $result;
+    }
+}
+
+//list comment
+function get_all_comments(){
+    $query = new Query();
+    $get = $query->get_all_comments();
+    //success
+    if(is_array($get)){
+        $result = array(
+            'status_code' => 200,
+            'status_message' => 'Comment Successfully Created',
+            'total' => $get['total'],
+            'results'=>$get['data']
+        );
+        return $result;
+    }
+    else{
+        $result = array(
+            'status_code' => 401,
+            'status_message' => 'An Error Occurred',
+        );
+        return $result;
+    }
+
+}
+//validate the date being sent
+function validate($data)
+{
+    $counterror = 0;
+    $array_error = array();
+
+    //check if data sent is empty
+    foreach ($data as $value => $key) {
+        $data_type = $key['data_type'];
+        $value = $key['value'];
+        $dataname = $key['name'];
+        if ($data_type == 'number') {
+            if ($value == '' || $value == null) {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " Cannot be empty"]);
+
+            } else {
+                if (!is_numeric($value)) {
+                    $counterror++;
+                    array_push($array_error, ['error_message' => $dataname . " is not a number"]);
+                }
+            }
+        }
+        else if ($data_type == 'date') {
+            if ($value == '') {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " Cannot be empty"]);
+            } else {
+                if (preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $value)) {
+                } else {
+                    $counterror++;
+                    array_push($array_error, ['error_message' => $dataname . " Invalid date sent"]);
+                }
+            }
+
+        }
+        elseif ($data_type == 'status') {
+
+            if ($value == '' || $value == null) {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " Cannot be empty"]);
+
+            } else {
+                if (!is_numeric($value)) {
+                    $counterror++;
+                    array_push($array_error, ['error_message' => $dataname . " is not a number"]);
+                } else {
+                    if ($value > 1) {
+                        $counterror++;
+                        array_push($array_error, ['error_message' => $dataname . " status nust be 1 or 0"]);
+                    }
+                }
+            }
+
+        }
+        else if ($data_type == 'array') {
+            $value = json_decode($value, true);
+            if (is_array($value)) {
+                if (count($value) == 0) {
+                    $counterror++;
+                    array_push($array_error, ['error_message' => $dataname . " Array is empty"]);
+                }
+            } else {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " is not an array"]);
+            }
+
+        }
+        else if ($data_type == 'date2') {
+            if ($value == '') {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " Cannot be empty"]);
+            } else {
+                if (preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-[0-9]{4}$/", $value)) {
+                } else {
+                    $counterror++;
+                    array_push($array_error, ['error_message' => $dataname . " Invalid date sent"]);
+                }
+            }
+
+        }
+        else if ($data_type == 'str_length'){
+            if ($value == '' || $value == null) {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " Cannot be empty"]);
+
+            } else {
+                if (strlen($value) > 500) {
+                    $counterror++;
+                    array_push($array_error, ['error_message' => $dataname . "length is greater than 500"]);
+                }
+            }
+        }
+        else {
+            if (empty($value)) {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " Cannot be empty"]);
+            }
+        }
+
+    }
+    if ($counterror > 0) {
+        return ['status' => 505, 'status_message' => 'Validation Error', 'result_data' => $array_error];
+    } else {
+        return 1;
+    }
+
+
+}
+
