@@ -64,7 +64,6 @@ function format_single_movie($data)
     $count_comments = 0;
     //check if movie exists
     $query = new Query();
-
     //check if movie has comments
     $comment_array = $query->get_movie_comments($data['episode_id']);
     //the movie has comments
@@ -337,6 +336,24 @@ function validate($data)
                 if (strlen($value) > 500) {
                     $counterror++;
                     array_push($array_error, ['error_message' => $dataname . "length is greater than 500"]);
+                }
+            }
+        }
+        else if ($data_type == 'max_num') {
+            if ($value == '' || $value == null) {
+                $counterror++;
+                array_push($array_error, ['error_message' => $dataname . " Cannot be empty"]);
+
+            } else {
+                if (!is_numeric($value)) {
+                    $counterror++;
+                    array_push($array_error, ['error_message' => $dataname . " is not a number"]);
+                }
+                else{
+                    if($value > 7){
+                        $counterror++;
+                        array_push($array_error, ['error_message' =>$dataname . " not found"]);
+                    }
                 }
             }
         }
