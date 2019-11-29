@@ -10,25 +10,29 @@
   <div class="method-summary"></div>
   <h4><a href="#Characters">Characters</a></h4>
   <ul>
-  <li><a href="#searchpeople"><code><span class="http-method">post</span> /people</code></a></li>
+  <li><a href="#getpeopleid"><code><span class="http-method">get</span> /characters/{characterId}</code></a></li>
   </ul>
   <h4><a href="#Comment">Comment</a></h4>
   <ul>
-  <li><a href="#addComment"><code><span class="http-method">post</span> /comment/create</code></a></li>
-  <li><a href="#commentListGet"><code><span class="http-method">get</span> /comment/list</code></a></li>
+  <li><a href="#commentListGet"><code><span class="http-method">get</span> /comments</code></a></li>
+  <li><a href="#searchInventory"><code><span class="http-method">get</span> /comments/{commentId}</code></a></li>
+    
   </ul>
   <h4><a href="#Films">Films</a></h4>
   <ul>
   <li><a href="#movieMovieIdGet"><code><span class="http-method">get</span> /movie/{movieId}</code></a></li>
   <li><a href="#searchInventory"><code><span class="http-method">get</span> /movie</code></a></li>
+  <li><a href="#searchInventory"><code><span class="http-method">get</span> /movie/characters/</code></a></li>
+  <li><a href="#searchInventory"><code><span class="http-method">get</span> /movie/comments</code></a></li> 
+  <li><a href="#searchInventory"><code><span class="http-method">post</span> /movie/comments</code></a></li>
   </ul>
 
   <h1><a name="Characters">Characters</a></h1>
-  <div class="method"><a name="searchpeople"/>
+  <div class="method"><a name="getpeopleid"/>
     <div class="method-path">
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /people</code></pre></div>
-    <div class="method-notes">By passing in the appropriate options, you can search for
-available characters</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /people</code></pre></div>
+     <div class="method-summary">Get a single character with the character id.By passing in the character id to get the details of the character.</div>
+
 <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
@@ -47,15 +51,22 @@ available characters</div>
      "status_message": "Success",
      "total": 87,
      "total_height": "14123cm makes 463ft and 5560.24 inches"
-      results:[ {
-          "gender" : "male",
-          "name" : "Luke Skywalker",
-          "height" : 172.0
-        }, {
-          "gender" : "male",
-          "name" : "Luke Skywalker",
-          "height" : 172.0
-        } ]
+      "data": {
+              "type": "character",
+              "id": "1",
+              "attributes": {
+                  "name": "Luke Skywalker",
+                  "height": "172",
+                  "gender": "male"
+              },
+              "movies": [
+                  "http://localhost/starwars_api/api/movie/2",
+                  "http://localhost/starwars_api/api/movie/6",
+                  "http://localhost/starwars_api/api/movie/3",
+                  "http://localhost/starwars_api/api/movie/1",
+                  "http://localhost/starwars_api/api/movie/7"
+              ]
+          }
         }</code></pre>
   </div>
   <hr/>

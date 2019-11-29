@@ -17,7 +17,7 @@ if ($_GET['flag']){
     if ($_GET['flag'] == 'single'){
         $id = $_GET['id'];
         $url = $base_url.'people/'.$id.'/?format=json';
-        $result = single_character_api($url);
+        $result = single_character_api($url, $id);
     }//no flag
     else{
         $result =array(

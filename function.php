@@ -368,7 +368,7 @@ function loop_characters_api($data)
 }
 
 //format single character data
-function single_character_api($url)
+function single_character_api($url, $id)
 {
     Global $my_base_url;
     $character_array = [];
@@ -376,7 +376,7 @@ function single_character_api($url)
     $single_data = get_from_api($url);
     if ($single_data['status_code'] == 1001) {
         $character_array['type'] = 'character';
-        $character_array['id'] = $single_data['data']['id'] ;
+        $character_array['id'] = $id ;
         $character_array['attributes'] = ['name' => $single_data['data']['name'], 'height' => $single_data['data']['height'], 'gender' => $single_data['data']['gender']];
         //get movie list
         foreach ($single_data['data']['films'] as $old_url) {
