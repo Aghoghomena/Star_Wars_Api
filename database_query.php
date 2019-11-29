@@ -37,7 +37,7 @@ class Query extends Database{
 
     //get movie comments
     function get_movie_comments($movie_id){
-        $columns = array("comment", "ip_address", "mc.date_added");
+        $columns = array("comment", "ip_address", "mc.date_added", "mc.id");
 
         $l_join['table_name'] = $this->movie_table. ' m';
         $l_join['first_column'] = "m.id";
@@ -64,9 +64,32 @@ class Query extends Database{
 
     //get all comments
     function get_all_comments(){
-        $columns = array("comment", "ip_address", "date_added");
+        $columns = array("comment", "ip_address", "mc.date_added", "episode_id", "movie_name", "mc.id");
 
-        $get_comments = $this->select_tb( $this->comments_table, $columns, '', '', '', ['date_added', 'DESC'], '', '', '');
+        $l_join['table_name'] = $this->movie_table. ' m';
+        $l_join['first_column'] = "mc.movie_id";
+        $l_join['second_column'] = "m.id";
+        $left_join[] = $l_join;
+
+        $get_comments = $this->select_tb( $this->comments_table.' mc', $columns, '', '', '', ['date_added', 'DESC'], '', '', $left_join);
+        return $get_comments;
+    }
+
+    function get_single_comment($id){
+        $columns = array("comment", "ip_address", "mc.date_added", "episode_id", "movie_name", "mc.id");
+
+        $l_join['table_name'] = $this->movie_table. ' m';
+        $l_join['first_column'] = "mc.movie_id";
+        $l_join['second_column'] = "m.id";
+        $left_join[] = $l_join;
+
+        $o_where['column_name'] = "mc.id";
+        $o_where['sign'] = "=";
+        $o_where['value'] = $id;
+        $movie_where[] = $o_where;
+
+
+        $get_comments = $this->select_tb( $this->comments_table. ' mc', $columns, $movie_where, '', '', '', '', '', $left_join);
         return $get_comments;
     }
 

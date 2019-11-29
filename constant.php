@@ -8,6 +8,7 @@
 
 
 $base_url= "https://swapi.co/api/";
+$my_base_url= "http://localhost/starwars_api/api/";
 
 $connect = mysqli_connect(
     'k9xdebw4k3zynl4u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',

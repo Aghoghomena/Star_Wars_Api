@@ -12,11 +12,15 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^pages/dashboard$ pages/dashboard.php
 # Rewrite for balance userscript.php?u=xxxxx
 
-RewriteRule ^api/movie$ api/movie/index.php [L]
-RewriteRule ^api/movie/([0-9]+)/?$ api/movie/?flag=single&id=$1 [NC,L]
-RewriteRule ^api/people/$ api/people/?flag=all [L]
-RewriteRule ^api/comment/create/?$ api/comment/?flag=create [NC,L]
-RewriteRule ^api/comment/list/?$ api/comment/?flag=list [NC,L]
+RewriteRule ^api/movies$ api/movie/?flag=all [L]
+RewriteRule ^api/movies/([0-9]+)/?$ api/movie/?flag=single&id=$1 [NC,L]
+RewriteRule ^api/movies/([0-9]+)/characters/(.*)$ api/movie/?flag=list_characters&movie_id=$1 [QSA]
+RewriteRule ^api/movies/([0-9]+)/characters?$ api/movie/?flag=list_characters&movie_id=$1 [NC,L]
+RewriteRule ^api/movies/([0-9]+)/comments?$ api/movie/?flag=comments&movie_id=$1 [NC,L]
+RewriteRule ^api/characters/$ api/people/?flag=all [L]
+RewriteRule ^api/characters/([0-9]+)/?$ api/people/?flag=single&id=$1 [NC,L]
+RewriteRule ^api/comments$ api/comment/?flag=allg [NC,L]
+RewriteRule ^api/comments/([0-9]+)/?$ api/comment/?flag=single&id=$1 [NC,L]
 #RewriteRule ^pages/([0-9a-zA-Z_-]+)$ pages/$1.php [NC,L]
 #RewriteRule ^scripts/([0-9a-zA-Z_-]+)$ scripts/$1.php [NC,L]
 #RewriteRule ^pages/([0-9a-zA-Z_-]+)/([0-9]+)/?$ pages/$1.php?id=$1 [NC,L]
