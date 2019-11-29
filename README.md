@@ -44,13 +44,11 @@
       "order" : "asc"|| "desc",
       "filter" : "male"||"female"||"n/a"||"unknown"
     }</code></pre>
-    <h3 class="field-label">Responses</h3>
+    <h3 class="field-label">Response</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
      "status_code": 200,
      "status_message": "Success",
-     "total": 87,
-     "total_height": "14123cm makes 463ft and 5560.24 inches"
       "data": {
               "type": "character",
               "id": "1",
