@@ -278,7 +278,7 @@ function get_all_comments()
             'status_code' => 200,
             'status_message' => 'Comment Successfully Created',
             'total' => $get['total'],
-            'results' => $comment_array
+            'data' => $comment_array
         );
         return $result;
     } else {

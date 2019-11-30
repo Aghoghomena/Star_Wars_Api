@@ -19,7 +19,7 @@ RewriteRule ^api/movies/([0-9]+)/characters?$ api/movie/?flag=list_characters&mo
 RewriteRule ^api/movies/([0-9]+)/comments?$ api/movie/?flag=comments&movie_id=$1 [NC,L]
 RewriteRule ^api/characters/$ api/people/?flag=all [L]
 RewriteRule ^api/characters/([0-9]+)/?$ api/people/?flag=single&id=$1 [NC,L]
-RewriteRule ^api/comments$ api/comment/?flag=allg [NC,L]
+RewriteRule ^api/comments$ api/comment/?flag=all [NC,L]
 RewriteRule ^api/comments/([0-9]+)/?$ api/comment/?flag=single&id=$1 [NC,L]
 #RewriteRule ^pages/([0-9a-zA-Z_-]+)$ pages/$1.php [NC,L]
 #RewriteRule ^scripts/([0-9a-zA-Z_-]+)$ scripts/$1.php [NC,L]
