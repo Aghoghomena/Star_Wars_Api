@@ -10,6 +10,7 @@
   <div class="method-summary"></div>
   <h4><a href="#Characters">Characters</a></h4>
   <ul>
+   <li><a href="#getpeople"><code><span class="http-method">get</span> /characters</code></a></li>
   <li><a href="#getpeopleid"><code><span class="http-method">get</span> /characters/{characterId}</code></a></li>
   </ul>
   <h4><a href="#Comment">Comment</a></h4>
@@ -28,22 +29,45 @@
   </ul>
 
   <h1><a name="Characters">Characters</a></h1>
+  <div class="method"><a name="getpeople"/>
+      <div class="method-path">
+      <pre class="get"><code class="huge"><span class="http-method">get</span> /people</code></pre></div>
+       <div class="method-summary">Get all characters.</div>
+      <h3 class="field-label">Response</h3>
+      <div class="example-data-content-type">Content-Type: application/json</div>
+      <pre class="example"><code>{
+       "status_code": 200,
+       "status_message": "Success",
+        "data": {
+                "type": "character",
+                "id": "1",
+                "attributes": {
+                    "name": "Luke Skywalker",
+                    "height": "172",
+                    "gender": "male"
+                },
+                "movies": [
+                            "https://starwars-2019.herokuapp.com/api/movie/2",
+                            "https://starwars-2019.herokuapp.com/api/movie/6",
+                            "https://starwars-2019.herokuapp.com/api/movie/3",
+                            "https://starwars-2019.herokuapp.com/api/movie/1",
+                            "https://starwars-2019.herokuapp.com/api/movie/7"
+                         ]
+            }
+          }</code></pre>
+    </div>
+    <hr/>
   <div class="method"><a name="getpeopleid"/>
     <div class="method-path">
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /people</code></pre></div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /people/peopleId</code></pre></div>
      <div class="method-summary">Get a single character with the character id.By passing in the character id to get the details of the character.</div>
 
 <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
       <li><code>application/json</code></li>
-      <li> optional</li>
+      <li>peopleId (required)</li>
     </ul>
-     <pre class="example"><code>{
-      "sort" : "age"||"height"||"name",
-      "order" : "asc"|| "desc",
-      "filter" : "male"||"female"||"n/a"||"unknown"
-    }</code></pre>
     <h3 class="field-label">Response</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{

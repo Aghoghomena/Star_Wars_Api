@@ -181,7 +181,7 @@ function get_pages_api($url, $existing_data, $total, $total_height)
                 'status_message' => 'Success',
                 'total' => $format_data['count'],
                 'total_height' => $format_data['height'],
-                'results' => $format_data['data']
+                'data' => $format_data['data']
             );
             return $result;
         }
@@ -198,7 +198,7 @@ function format_pages_data($data, $total, $existing_data, $total_height)
         if ($datum['height'] !== 'unknown') {
             $total_height += $datum['height'];
         }
-        array_push($formatted_data, ['name' => $datum['name'], 'gender' => $datum['gender'], 'height' => $datum['height']]);
+        array_push($formatted_data, ['type'=> 'characters', 'id' => substr(str_replace('/', '', $datum['url']), 23), 'attributes'=>['name' => $datum['name'], 'height' => $datum['height'], 'gender' => $datum['gender']]]);
         $total++;
     }
     return ['data' => $formatted_data, 'count' => $total, 'height' => $total_height];
