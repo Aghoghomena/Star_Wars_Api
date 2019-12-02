@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e98c614c-d688-4650-9456-35a0268cf802" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +55,7 @@
           <entry key="Dockerfile" value="78" />
           <entry key="conf" value="25" />
           <entry key="hphp" value="202" />
-          <entry key="htaccess" value="677" />
+          <entry key="htaccess" value="678" />
           <entry key="md" value="1528" />
           <entry key="php" value="11725" />
         </counts>
@@ -67,7 +67,7 @@
           <entry key="PHP" value="11738" />
           <entry key="PLAIN_TEXT" value="189" />
           <entry key="SmartyConfig" value="25" />
-          <entry key="htaccess" value="677" />
+          <entry key="htaccess" value="678" />
         </counts>
       </usages-collector>
     </session>
@@ -131,16 +131,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.htaccess">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+            <state relative-caret-position="238">
+              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -192,10 +192,10 @@
         <option value="$PROJECT_DIR$/api/comment/index.php" />
         <option value="$PROJECT_DIR$/api/movie/index.php" />
         <option value="$PROJECT_DIR$/constant.php" />
-        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/function.php" />
         <option value="$PROJECT_DIR$/api/people/index.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.htaccess" />
       </list>
     </option>
   </component>
@@ -316,12 +316,12 @@
       <workItem from="1574254296366" duration="9175000" />
       <workItem from="1574268412031" duration="23354000" />
       <workItem from="1574309727703" duration="19997000" />
-      <workItem from="1574673477053" duration="46390000" />
+      <workItem from="1574673477053" duration="46601000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98916000" />
+    <option name="totallyTimeSpent" value="99127000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -492,13 +492,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/people/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -513,6 +506,13 @@
             <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
         </state>
       </provider>
     </entry>
