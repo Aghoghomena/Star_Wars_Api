@@ -12,14 +12,14 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteRule ^pages/dashboard$ pages/dashboard.php
 # Rewrite for balance userscript.php?u=xxxxx
 
-RewriteRule ^api/movies/$ api/movie/?flag=all [L]
+RewriteRule ^api/movies\/?$ api/movie/?flag=all [NC]
 RewriteRule ^api/movies/([0-9]+)/?$ api/movie/?flag=single&id=$1 [NC,L]
 RewriteRule ^api/movies/([0-9]+)/characters/(.*)$ api/movie/?flag=list_characters&movie_id=$1 [QSA]
 RewriteRule ^api/movies/([0-9]+)/characters?$ api/movie/?flag=list_characters&movie_id=$1 [NC,L]
-RewriteRule ^api/movies/([0-9]+)/comments?$ api/movie/?flag=comments&movie_id=$1 [NC,L]
-RewriteRule ^api/characters/$ api/people/?flag=all [L]
+RewriteRule ^api/movies/([0-9]+)/comments/?$ api/movie/?flag=comments&movie_id=$1 [NC,L]
+RewriteRule ^api/characters\/?$ api/people/?flag=all [NC]
 RewriteRule ^api/characters/([0-9]+)/?$ api/people/?flag=single&id=$1 [NC,L]
-RewriteRule ^api/comments$ api/comment/?flag=all [NC,L]
+RewriteRule ^api/comments\/?$ api/comment/?flag=all [NC]
 RewriteRule ^api/comments/([0-9]+)/?$ api/comment/?flag=single&id=$1 [NC,L]
 #RewriteRule ^pages/([0-9a-zA-Z_-]+)$ pages/$1.php [NC,L]
 #RewriteRule ^scripts/([0-9a-zA-Z_-]+)$ scripts/$1.php [NC,L]

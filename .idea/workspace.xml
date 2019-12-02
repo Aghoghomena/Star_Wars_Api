@@ -55,7 +55,7 @@
           <entry key="Dockerfile" value="78" />
           <entry key="conf" value="25" />
           <entry key="hphp" value="202" />
-          <entry key="htaccess" value="678" />
+          <entry key="htaccess" value="685" />
           <entry key="md" value="1528" />
           <entry key="php" value="11725" />
         </counts>
@@ -67,7 +67,7 @@
           <entry key="PHP" value="11738" />
           <entry key="PLAIN_TEXT" value="189" />
           <entry key="SmartyConfig" value="25" />
-          <entry key="htaccess" value="678" />
+          <entry key="htaccess" value="685" />
         </counts>
       </usages-collector>
     </session>
@@ -134,8 +134,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.htaccess">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+            <state relative-caret-position="357">
+              <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -316,12 +316,12 @@
       <workItem from="1574254296366" duration="9175000" />
       <workItem from="1574268412031" duration="23354000" />
       <workItem from="1574309727703" duration="19997000" />
-      <workItem from="1574673477053" duration="46601000" />
+      <workItem from="1574673477053" duration="47755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99127000" />
+    <option name="totallyTimeSpent" value="100281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -511,8 +511,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="357">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="55" selection-end-line="21" selection-end-column="55" />
         </state>
       </provider>
     </entry>
