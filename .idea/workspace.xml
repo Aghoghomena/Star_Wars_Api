@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e98c614c-d688-4650-9456-35a0268cf802" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/people/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/people/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function.php" beforeDir="false" afterPath="$PROJECT_DIR$/function.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,14 +56,14 @@
           <entry key="conf" value="25" />
           <entry key="hphp" value="202" />
           <entry key="htaccess" value="677" />
-          <entry key="md" value="1527" />
+          <entry key="md" value="1528" />
           <entry key="php" value="11725" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Dockerfile" value="78" />
-          <entry key="Markdown" value="1527" />
+          <entry key="Markdown" value="1528" />
           <entry key="PHP" value="11738" />
           <entry key="PLAIN_TEXT" value="189" />
           <entry key="SmartyConfig" value="25" />
@@ -146,8 +144,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="287">
-                <caret line="68" column="28" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
+              <first_editor relative-caret-position="203">
+                <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
               </first_editor>
               <second_editor />
             </state>
@@ -318,18 +316,18 @@
       <workItem from="1574254296366" duration="9175000" />
       <workItem from="1574268412031" duration="23354000" />
       <workItem from="1574309727703" duration="19997000" />
-      <workItem from="1574673477053" duration="45660000" />
+      <workItem from="1574673477053" duration="46390000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98186000" />
+    <option name="totallyTimeSpent" value="98916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25642672" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25642672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" weight="0.32974428" />
@@ -343,7 +341,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3176312" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3176312" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -511,8 +509,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="287">
-            <caret line="68" column="28" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
+          <first_editor relative-caret-position="203">
+            <caret line="25" column="93" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
           </first_editor>
           <second_editor />
         </state>

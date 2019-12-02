@@ -23,7 +23,7 @@
   <ul>
   <li><a href="#movieMovieIdGet"><code><span class="http-method">get</span> /movie/{movieId}</code></a></li>
   <li><a href="#allmovies"><code><span class="http-method">get</span> /movie</code></a></li>
-  <li><a href="#moviecharacters"><code><span class="http-method">get</span> /movie/{movieId}characters/</code></a></li>
+  <li><a href="#moviecharacters"><code><span class="http-method">get</span> /movie/{movieId}/characters/</code></a></li>
   <li><a href="#moviecomments"><code><span class="http-method">get</span> /movie/(movieId}/comments</code></a></li> 
   <li><a href="#createcomment"><code><span class="http-method">post</span> /movie/{movieId}/comments</code></a></li>
   </ul>
